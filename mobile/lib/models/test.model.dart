@@ -34,13 +34,13 @@ class TestModel {
     if (map == null) return null;
   
     return TestModel(
-      testId: map['testId'],
-      couponId: map['couponId'],
-      secretKey: map['secretKey'],
-      countryId: map['countryId'],
-      resultTime: map['resultTime'],
+      testId: map['test_id'],
+      couponId: map['coupon_id'],
+      secretKey: map['secret_key'],
+      countryId: map['country_id'],
+      resultTime: map['result_time'],
       result: map['result'],
-      labId: map['labId'],
+      labId: map['lab_id'],
     );
   }
 

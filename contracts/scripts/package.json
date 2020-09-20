@@ -1,0 +1,21 @@
+{
+  "name": "deploy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "deploy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/runtime": "^7.6.2",
+    "@scatterjs/core": "^2.7.44",
+    "@scatterjs/eosjs2": "^1.5.26",
+    "dotenv": "^8.1.0",
+    "eosjs": "^20.0.0",
+    "fs": "0.0.1-security",
+    "isomorphic-fetch": "^2.2.1",
+    "path": "^0.12.7"
+  }
+}

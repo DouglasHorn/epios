@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -ex
+
+echo "push action smart contracts"
+
+docker exec -it epios_eosio cleos push action main.epios crcountry '{"country_name": "Iran"}' -p main.epios

@@ -1,0 +1,5 @@
+local-node/data
+node_modules
+*.abi
+*.wasm
+*.csv

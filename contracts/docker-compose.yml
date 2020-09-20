@@ -1,0 +1,13 @@
+version: '3'
+services:
+  epios_eosio:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8888:8888
+      - 9876:9876
+    volumes:
+      - .:/app
+    container_name: epios_eosio
+

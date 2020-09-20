@@ -19,8 +19,8 @@ class CountryModel {
     if (map == null) return null;
   
     return CountryModel(
-      countryId: map['countryId'],
-      countryName: map['countryName'],
+      countryId: map['country_id'],
+      countryName: map['country_name'],
     );
   }
 

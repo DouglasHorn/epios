@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="281px" height="280px" viewBox="0 0 281 280" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>epios_test</title>
+    <defs>
+        <linearGradient x1="50%" y1="12.2002096%" x2="51.4067153%" y2="93.0682108%" id="linearGradient-1">
+            <stop stop-color="#689BFF" offset="0%"></stop>
+            <stop stop-color="#558FFF" offset="100%"></stop>
+        </linearGradient>
+        <path d="M47,186 C72.9573832,186 94,165.181241 94,139.5 C94,122.379173 78.3333333,75.8791728 47,0 C15.6666667,75.8791728 0,122.379173 0,139.5 C0,165.181241 21.0426168,186 47,186 Z" id="path-2"></path>
+        <linearGradient x1="50%" y1="12.2002096%" x2="51.4067153%" y2="93.0682108%" id="linearGradient-4">
+            <stop stop-color="#C2D7FF" offset="0%"></stop>
+            <stop stop-color="#76A1F3" offset="100%"></stop>
+        </linearGradient>
+        <path d="M47,166 C70.1662668,166 88.9462366,147.419817 88.9462366,124.5 C88.9462366,109.220122 74.9641577,67.7201219 47,0 C19.0358423,67.7201219 5.05376344,109.220122 5.05376344,124.5 C5.05376344,147.419817 23.8337332,166 47,166 Z" id="path-5"></path>
+        <path d="M47,130 C58.045695,130 67,117.016258 67,101 C67,90.3224948 60.3333333,61.3224948 47,14 C33.6666667,61.3224948 27,90.3224948 27,101 C27,117.016258 35.954305,130 47,130 Z" id="path-7"></path>
+        <path d="M47,93 C53.0751322,93 58,85.6126984 58,76.5 C58,70.4248678 54.3333333,53.9248678 47,27 C39.6666667,53.9248678 36,70.4248678 36,76.5 C36,85.6126984 40.9248678,93 47,93 Z" id="path-9"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="create_performtest2" transform="translate(-17.000000, -303.000000)">
+            <path d="M160,374 C141.774603,374 125.274603,381.387302 113.330952,393.330952 C101.387302,405.274603 94,421.774603 94,440 C94,458.225397 101.387302,474.725397 113.330952,486.669048 C125.274603,498.612698 141.774603,506 160,506 C178.225397,506 194.725397,498.612698 206.669048,486.669048 C218.612698,474.725397 226,458.225397 226,440 C226,421.774603 218.612698,405.274603 206.669048,393.330952 C194.725397,381.387302 178.225397,374 160,374 Z" id="Rectangle-Copy" stroke="#DDE9FF" stroke-width="2" fill="#FFFFFF"></path>
+            <g id="Group-5" transform="translate(113.000000, 346.000000)">
+                <mask id="mask-3" fill="white">
+                    <use xlink:href="#path-2"></use>
+                </mask>
+                <use id="Oval" fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+                <mask id="mask-6" fill="white">
+                    <use xlink:href="#path-5"></use>
+                </mask>
+                <use id="Oval-Copy" fill="url(#linearGradient-4)" xlink:href="#path-5"></use>
+                <mask id="mask-8" fill="white">
+                    <use xlink:href="#path-7"></use>
+                </mask>
+                <use id="Oval" fill="#FFFFFF" opacity="0.367885045" xlink:href="#path-7"></use>
+                <mask id="mask-10" fill="white">
+                    <use xlink:href="#path-9"></use>
+                </mask>
+                <use id="Oval-Copy-4" fill="#FFFFFF" opacity="0.367885045" xlink:href="#path-9"></use>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -11,6 +11,10 @@ class InlineMessageModel {
   factory InlineMessageModel.error({String message="Error"}){
     return InlineMessageModel(message: message,textColor:Colors.red);
   }
+
+  factory InlineMessageModel.success({String message="Success"}){
+    return InlineMessageModel(message: message,textColor:Colors.green);
+  }
 }
 
 class InlineMessage extends StatefulWidget {

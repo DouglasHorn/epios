@@ -1,7 +1,7 @@
 import 'package:epios/commons/global.dart';
 import 'package:epios/components/inlineMessage.component.dart';
 import 'package:epios/models/account.model.dart';
-import 'package:epios/services/storage.service.dart';
+import 'package:epios/models/data.model.dart';
 import 'package:flutter/material.dart';
 
 import 'package:epios/commons/styles.dart';
@@ -93,6 +93,9 @@ class _SetPasswordPageState extends State<SetPasswordPage> {
     var acc = AccountModel(accountName: widget.accountName,password: _passwordController.text);
     Global.account = acc;
     Global.storage.setAccount(acc);
+
+    Global.data = DataModel(persons: {});
+    Global.storage.setData(Global.data);
 
     Navigator.pushAndRemoveUntil(
       context, 

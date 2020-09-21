@@ -1,4 +1,5 @@
 import 'package:epios/commons/global.dart';
+import 'package:epios/components/inlineMessage.component.dart';
 import 'package:epios/models/account.model.dart';
 import 'package:epios/services/storage.service.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class SetPasswordPage extends StatefulWidget {
 
 class _SetPasswordPageState extends State<SetPasswordPage> {
   final TextEditingController _passwordController = TextEditingController();
-  String _message;
+  InlineMessageModel _message;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,10 +57,7 @@ class _SetPasswordPageState extends State<SetPasswordPage> {
               decoration: InputDecoration(
               ),
             ),
-            SizedBox(
-              height: 30,
-              child: _message!=null ? Text(_message,style: const TextStyle(color: Colors.red),):null,
-            ),
+            InlineMessage(model: _message),
             // sized_20,
             // Text("Email",style: textHeaderStyle,),
             // sized_10,
@@ -88,7 +86,7 @@ class _SetPasswordPageState extends State<SetPasswordPage> {
   void _onSetPasswrodPressed(){
     if(_passwordController.text.isEmpty){
       setState(() {
-        _message = "Please enter your password";
+        _message = InlineMessageModel.error(message: "Please enter your password");
       });
       return;
     }

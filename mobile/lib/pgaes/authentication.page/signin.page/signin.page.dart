@@ -1,4 +1,6 @@
+import 'package:epios/commons/global.dart';
 import 'package:epios/commons/styles.dart';
+import 'package:epios/components/inlineMessage.component.dart';
 import 'package:epios/components/simpleAppBar.component.dart';
 import 'package:epios/pgaes/home.page/home.page.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,9 @@ class SigninPage extends StatefulWidget {
 }
 
 class _SigninPageState extends State<SigninPage> {
+  final TextEditingController _accountController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  InlineMessageModel _message;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,18 +45,15 @@ class _SigninPageState extends State<SigninPage> {
             Text("Account name",style: textHeaderStyle,),
             sized_10,
             TextField(
-              decoration: InputDecoration(
-
-              ),
+              controller: _accountController,
             ),
             sized_20,
             Text("Password",style: textHeaderStyle,),
             sized_10,
             TextField(
-              decoration: InputDecoration(
-
-              ),
+              controller: _passwordController,
             ),
+            InlineMessage(model: _message),
             sized_50,
             SizedBox(
               width: infinity,
@@ -59,13 +61,39 @@ class _SigninPageState extends State<SigninPage> {
               child: RaisedButton(
                 child: Text("SIGN IN",style: buttonTextStyle,),
                 textColor: Colors.white,
-                onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage())), 
+                onPressed: _onSigninPressed, 
               ),
             ),
             sized_30,
           ],
         ),
       ),
+    );
+  }
+
+  void _onSigninPressed(){
+    if(_accountController.text.isEmpty){
+      setState(() {
+        _message = InlineMessageModel.error(message: "Please enter account name");
+      });
+      return;
+    }
+    if(_passwordController.text.isEmpty){
+      setState(() {
+        _message = InlineMessageModel.error(message: "Please enter password");
+      });
+      return;
+    }
+    if(_passwordController.text != Global.account.password || _accountController.text != Global.account.accountName){
+      setState(() {
+        _message = InlineMessageModel.error(message: "Invalid account name or password");
+      });
+      return;
+    }
+    Navigator.pushAndRemoveUntil(
+      context, 
+      MaterialPageRoute(builder: (context)=>HomePage()),
+      ModalRoute.withName("auth")
     );
   }
 }

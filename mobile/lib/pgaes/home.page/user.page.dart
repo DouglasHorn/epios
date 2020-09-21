@@ -1,4 +1,6 @@
+import 'package:epios/commons/global.dart';
 import 'package:epios/commons/styles.dart';
+import 'package:epios/pgaes/authentication.page/setNewPassword.page/setNewPassword.page.dart';
 import 'package:flutter/material.dart';
 
 class UserPage extends StatefulWidget {
@@ -27,7 +29,7 @@ class _UserPageState extends State<UserPage> {
               borderRadius: BorderRadius.circular(6)
             ),
             child: Center(
-              child: Text("asdfasdfasdf"),
+              child: Text(Global.account.accountName,style: TextStyle(fontSize: 20),),
             ),
           ),
           sized_30,
@@ -37,19 +39,21 @@ class _UserPageState extends State<UserPage> {
             child: RaisedButton(
               child: Text("SET NEW PASSWORD",style: buttonTextStyle,),
               textColor: Colors.white,
-              onPressed: (){}, 
+              onPressed: (){
+                Navigator.push(context,MaterialPageRoute(builder: (context)=>SetNewPasswordPage()));
+              }, 
             ),
           ),
-          sized_15,
-          SizedBox(
-            width: infinity,
-            height: 45,
-            child: RaisedButton(
-              child: Text("SIGN OUT",style: buttonTextStyle,),
-              textColor: Colors.white,
-              onPressed: (){}, 
-            ),
-          ),
+          // sized_15,
+          // SizedBox(
+          //   width: infinity,
+          //   height: 45,
+          //   child: RaisedButton(
+          //     child: Text("SIGN OUT",style: buttonTextStyle,),
+          //     textColor: Colors.white,
+          //     onPressed: (){}, 
+          //   ),
+          // ),
         ],
       ),
     );

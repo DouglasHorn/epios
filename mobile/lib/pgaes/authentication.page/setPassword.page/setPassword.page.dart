@@ -1,14 +1,25 @@
+import 'package:epios/commons/global.dart';
+import 'package:epios/models/account.model.dart';
+import 'package:epios/services/storage.service.dart';
+import 'package:flutter/material.dart';
+
 import 'package:epios/commons/styles.dart';
 import 'package:epios/components/simpleAppBar.component.dart';
 import 'package:epios/pgaes/home.page/home.page.dart';
-import 'package:flutter/material.dart';
 
 class SetPasswordPage extends StatefulWidget {
+  final String accountName;
+  const SetPasswordPage({
+    Key key,
+    this.accountName,
+  }) : super(key: key);
   @override
   _SetPasswordPageState createState() => _SetPasswordPageState();
 }
 
 class _SetPasswordPageState extends State<SetPasswordPage> {
+  final TextEditingController _passwordController = TextEditingController();
+  String _message;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,18 +51,23 @@ class _SetPasswordPageState extends State<SetPasswordPage> {
             Text("Password",style: textHeaderStyle,),
             sized_10,
             TextField(
+              controller: _passwordController,
+              obscureText: true,
               decoration: InputDecoration(
-
               ),
             ),
-            sized_20,
-            Text("Email",style: textHeaderStyle,),
-            sized_10,
-            TextField(
-              decoration: InputDecoration(
-
-              ),
+            SizedBox(
+              height: 30,
+              child: _message!=null ? Text(_message,style: const TextStyle(color: Colors.red),):null,
             ),
+            // sized_20,
+            // Text("Email",style: textHeaderStyle,),
+            // sized_10,
+            // TextField(
+            //   decoration: InputDecoration(
+
+            //   ),
+            // ),
             sized_50,
             SizedBox(
               width: infinity,
@@ -59,13 +75,31 @@ class _SetPasswordPageState extends State<SetPasswordPage> {
               child: RaisedButton(
                 child: Text("SET PASSWORD",style: buttonTextStyle,),
                 textColor: Colors.white,
-                onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage())), 
+                onPressed: _onSetPasswrodPressed, 
               ),
             ),
             sized_30,
           ],
         ),
       ),
+    );
+  }
+
+  void _onSetPasswrodPressed(){
+    if(_passwordController.text.isEmpty){
+      setState(() {
+        _message = "Please enter your password";
+      });
+      return;
+    }
+    var acc = AccountModel(accountName: widget.accountName,password: _passwordController.text);
+    Global.account = acc;
+    Global.storage.setAccount(acc);
+
+    Navigator.pushAndRemoveUntil(
+      context, 
+      MaterialPageRoute(builder: (context)=>HomePage()),
+      ModalRoute.withName("auth")
     );
   }
 } 

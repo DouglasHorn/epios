@@ -9,6 +9,9 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  final TextEditingController _accountController = TextEditingController();
+  String _message;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,9 +43,15 @@ class _SignUpPageState extends State<SignUpPage> {
             Text("Your new account name",style: t.headline6.copyWith(color:Colors.black.withOpacity(0.6),fontSize: 12),),
             sized_10,
             TextField(
+              controller: _accountController,
+              maxLength: 10,
               decoration: InputDecoration(
-
+                
               ),
+            ),
+            SizedBox(
+              height: 30,
+              child: _message!=null ? Text(_message,style: const TextStyle(color: Colors.red),):null,
             ),
             sized_50,
             SizedBox(
@@ -52,7 +61,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 elevation: 0,
                 child: Text("ACCEPT",style: TextStyle(fontWeight: FontWeight.bold),),
                 textColor: Colors.white,
-                onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>SetPasswordPage())), 
+                onPressed: _onAcceptPressed
               ),
             ),
             sized_30,
@@ -60,5 +69,15 @@ class _SignUpPageState extends State<SignUpPage> {
         ),
       ),
     );
+  }
+
+  void _onAcceptPressed(){
+    if(_accountController.text.isEmpty){
+      setState(() {
+        _message = "Account name can't be empty!";
+      });
+      return;
+    }
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>SetPasswordPage(accountName: _accountController.text,)));
   }
 }

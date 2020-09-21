@@ -1,4 +1,5 @@
 import 'package:epios/commons/styles.dart';
+import 'package:epios/components/inlineMessage.component.dart';
 import 'package:epios/components/simpleAppBar.component.dart';
 import 'package:epios/pgaes/authentication.page/setPassword.page/setPassword.page.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _accountController = TextEditingController();
-  String _message;
+  InlineMessageModel _message;
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +50,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 
               ),
             ),
-            SizedBox(
-              height: 30,
-              child: _message!=null ? Text(_message,style: const TextStyle(color: Colors.red),):null,
-            ),
+            InlineMessage(model: _message),
             sized_50,
             SizedBox(
               width: infinity,
@@ -74,7 +72,7 @@ class _SignUpPageState extends State<SignUpPage> {
   void _onAcceptPressed(){
     if(_accountController.text.isEmpty){
       setState(() {
-        _message = "Account name can't be empty!";
+        _message = InlineMessageModel.error(message: "Account name can't be empty!");
       });
       return;
     }

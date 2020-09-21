@@ -1,4 +1,7 @@
+import 'package:epios/commons/global.dart';
 import 'package:epios/commons/styles.dart';
+import 'package:epios/components/busyIndicator.component.dart';
+import 'package:epios/models/account.model.dart';
 import 'package:epios/pgaes/authentication.page/signin.page/signin.page.dart';
 import 'package:epios/pgaes/authentication.page/signup.page/signup.page.dart';
 import 'package:flutter/material.dart';
@@ -37,30 +40,49 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
             )
           ),
           sized_30,
-          SizedBox(
-            width: infinity,
-            height: 45,
-            child: RaisedButton(
-              child: Text("SIGN UP",style: TextStyle(fontWeight: FontWeight.bold)),
-              textColor: Colors.white,
-              onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpPage())), 
-              elevation: 0,
-            ),
-          ),
-          sized_15,
-          SizedBox(
-            width: infinity,
-            height: 45,
-            child: RaisedButton(
-              child: Text("SIGN IN",style: TextStyle(fontWeight: FontWeight.bold),),
-              textColor: Colors.white,
-              onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>SigninPage())), 
-              elevation: 0,
-            ),
-          ),
-          sized_30,
+          _buttonBuilder(),
         ],
       ),
+    );
+  }
+
+  Widget _buttonBuilder(){
+    return FutureBuilder(
+      future: Global.storage.getAccount(),
+      initialData: null,
+      builder: (BuildContext context, AsyncSnapshot<AccountModel> snapshot) {
+        if(snapshot.connectionState == ConnectionState.waiting)
+          return BusyIndicator();
+        if(snapshot.connectionState == ConnectionState.done){
+          return Column(
+            children: [
+              if(snapshot.data == null)
+                SizedBox(
+                  width: infinity,
+                  height: 45,
+                  child: RaisedButton(
+                    child: Text("SIGN UP",style: TextStyle(fontWeight: FontWeight.bold)),
+                    textColor: Colors.white,
+                    onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpPage(),settings: RouteSettings(name: "auth"))), 
+                    elevation: 0,
+                  ),
+                ),
+              if(snapshot.data != null)
+                SizedBox(
+                  width: infinity,
+                  height: 45,
+                  child: RaisedButton(
+                    child: Text("SIGN IN",style: TextStyle(fontWeight: FontWeight.bold),),
+                    textColor: Colors.white,
+                    onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>SigninPage())), 
+                    elevation: 0,
+                  ),
+                ),
+            ],
+          );
+        }
+        return SizedBox();
+      },
     );
   }
 }

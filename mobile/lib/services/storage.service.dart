@@ -1,5 +1,6 @@
 import 'package:encrypt/encrypt.dart';
 import 'package:epios/models/account.model.dart';
+import 'package:epios/models/data.model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StorageService{
@@ -18,6 +19,20 @@ class StorageService{
       return null;
     var d = _decrypt(s);
     return AccountModel.fromJson(d);
+  }
+
+  Future setData(DataModel data)async{
+    var j = data.toJson();
+    var en = _encrypt(j);
+    await _setString("data", en);
+  }
+
+  Future<DataModel> getData()async{
+    var s = await _getString("data");
+    if(s==null)
+      return null;
+    var d = _decrypt(s);
+    return DataModel.fromJson(d);
   }
 
   String _encrypt(String text){

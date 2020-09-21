@@ -2,6 +2,7 @@ import 'package:epios/commons/global.dart';
 import 'package:epios/commons/styles.dart';
 import 'package:epios/components/inlineMessage.component.dart';
 import 'package:epios/components/simpleAppBar.component.dart';
+import 'package:epios/models/data.model.dart';
 import 'package:epios/pgaes/home.page/home.page.dart';
 import 'package:flutter/material.dart';
 
@@ -71,7 +72,7 @@ class _SigninPageState extends State<SigninPage> {
     );
   }
 
-  void _onSigninPressed(){
+  void _onSigninPressed() async{
     if(_accountController.text.isEmpty){
       setState(() {
         _message = InlineMessageModel.error(message: "Please enter account name");
@@ -90,6 +91,7 @@ class _SigninPageState extends State<SigninPage> {
       });
       return;
     }
+    Global.data = await Global.storage.getData();
     Navigator.pushAndRemoveUntil(
       context, 
       MaterialPageRoute(builder: (context)=>HomePage()),

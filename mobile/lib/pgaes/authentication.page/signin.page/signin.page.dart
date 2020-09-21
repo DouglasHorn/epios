@@ -53,6 +53,7 @@ class _SigninPageState extends State<SigninPage> {
             sized_10,
             TextField(
               controller: _passwordController,
+              obscureText: true,
             ),
             InlineMessage(model: _message),
             sized_50,

@@ -54,6 +54,7 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
         if(snapshot.connectionState == ConnectionState.waiting)
           return BusyIndicator();
         if(snapshot.connectionState == ConnectionState.done){
+          Global.account = snapshot.data;
           return Column(
             children: [
               if(snapshot.data == null)

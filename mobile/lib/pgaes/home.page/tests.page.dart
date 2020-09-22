@@ -1,4 +1,6 @@
+import 'package:epios/commons/global.dart';
 import 'package:epios/commons/styles.dart';
+import 'package:epios/models/data.model.dart';
 import 'package:epios/pgaes/addPerson.page/addPerson.page.dart';
 import 'package:epios/pgaes/personsTests.page/personsTests.page.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +17,7 @@ class _TestsPageState extends State<TestsPage> {
 
   @override
   Widget build(BuildContext context) {
-    if(!_hasTests)
+    if(Global.data.persons.isEmpty)
       return _noTestBuilder();
     return _testListBuilder();
   }
@@ -41,11 +43,9 @@ class _TestsPageState extends State<TestsPage> {
                   child: SvgPicture.asset("assets/images/svgs/user.svg",color: Colors.white,)
                 )
               ),
-              onTap: () {
-                _hasTests = true;
-                setState(() {
-                  
-                });
+              onTap: () async {
+                await Navigator.push(context, MaterialPageRoute(builder: (context)=>AddPersonPage(),));
+                setState(() {});
               },
             ),
           ),
@@ -68,10 +68,8 @@ class _TestsPageState extends State<TestsPage> {
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
-              {"name":"Rami James","id":0,"count":0},
-              {"name":"Sarai Yaseen","id":1,"count":0},
-              {"name":"Douglas Horn","id":2,"count":2},
-            ].map((e) => _testItemBuilder(e)).toList(),
+              ...Global.data.persons.values.map((e) => _testItemBuilder(e)).toList(),
+            ]
           ),
         ),
         Positioned(
@@ -89,8 +87,9 @@ class _TestsPageState extends State<TestsPage> {
                     child: FaIcon(FontAwesomeIcons.userPlus,color: Colors.white,size: 20,)
                   )
                 ),
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>AddPersonPage(),));
+                onTap: () async {
+                  await Navigator.push(context, MaterialPageRoute(builder: (context)=>AddPersonPage(),));
+                  setState(() {});
                 },
               ),
             ),
@@ -100,7 +99,7 @@ class _TestsPageState extends State<TestsPage> {
     );
   }
 
-  Widget _testItemBuilder(dynamic model){
+  Widget _testItemBuilder(PersonModel model){
     var t = Theme.of(context).textTheme;
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
@@ -119,13 +118,13 @@ class _TestsPageState extends State<TestsPage> {
             sized_10,
             Row(
               children: <Widget>[
-                Text(model["name"],style: t.headline6,),
+                Text(model.name,style: t.headline6,),
                 Spacer(),
-                if(model["count"] != 0)
+                if(model.tests.length != 0)
                   Chip(
                     
                     elevation: 0,
-                    label: Text(model["count"].toString(),style: t.caption.copyWith(color: Colors.white),),
+                    label: Text(model.tests.length.toString(),style: t.caption.copyWith(color: Colors.white),),
                     backgroundColor: primaryColor,
                   ),
                 sized_10,

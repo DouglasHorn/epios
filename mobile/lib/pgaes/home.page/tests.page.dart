@@ -13,7 +13,6 @@ class TestsPage extends StatefulWidget {
 }
 
 class _TestsPageState extends State<TestsPage> {
-  bool _hasTests = false;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,6 @@ class _TestsPageState extends State<TestsPage> {
   }
 
   Widget _noTestBuilder(){
-    var t = Theme.of(context).textTheme;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -103,7 +101,7 @@ class _TestsPageState extends State<TestsPage> {
     var t = Theme.of(context).textTheme;
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
-      onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>PersonsTestsPage())),
+      onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>PersonsTestsPage(model: model,))),
       child: Container(
         width: infinity,
         height: 90,
@@ -121,8 +119,7 @@ class _TestsPageState extends State<TestsPage> {
                 Text(model.name,style: t.headline6,),
                 Spacer(),
                 if(model.tests.length != 0)
-                  Chip(
-                    
+                  Chip(                    
                     elevation: 0,
                     label: Text(model.tests.length.toString(),style: t.caption.copyWith(color: Colors.white),),
                     backgroundColor: primaryColor,

@@ -41,10 +41,7 @@ class _TestsPageState extends State<TestsPage> {
                   child: SvgPicture.asset("assets/images/svgs/user.svg",color: Colors.white,)
                 )
               ),
-              onTap: () async {
-                await Navigator.push(context, MaterialPageRoute(builder: (context)=>AddPersonPage(),));
-                setState(() {});
-              },
+              onTap: _onAddPersonPressed,
             ),
           ),
         )
@@ -85,10 +82,7 @@ class _TestsPageState extends State<TestsPage> {
                     child: FaIcon(FontAwesomeIcons.userPlus,color: Colors.white,size: 20,)
                   )
                 ),
-                onTap: () async {
-                  await Navigator.push(context, MaterialPageRoute(builder: (context)=>AddPersonPage(),));
-                  setState(() {});
-                },
+                onTap: _onAddPersonPressed,
               ),
             ),
           ),
@@ -133,5 +127,10 @@ class _TestsPageState extends State<TestsPage> {
         ),
       ),
     );
+  }
+
+  void _onAddPersonPressed()async{
+    await Navigator.push(context, MaterialPageRoute(builder: (context)=>AddPersonPage(),));
+    setState(() {});
   }
 }

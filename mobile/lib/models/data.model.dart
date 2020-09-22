@@ -16,7 +16,9 @@ class DataModel {
     if (map == null) return null;
 
     return DataModel(
-      persons: Map<String,PersonModel>.from(map['persons']),
+      persons: Map<String,PersonModel>.from(
+        (map['persons'] as Map).map((key, value) =>  MapEntry(key, PersonModel.fromJson(value)))
+      ),
     );
   }
 
@@ -55,17 +57,26 @@ class PersonModel {
 }
 
 class TestModel {
+  final String title;
+  final String description;
   final String couponId;
   final int testDate;
+  final int status;
   TestModel({
+    this.title,
+    this.description,
     this.couponId,
     this.testDate,
+    this.status,
   });
 
   Map<String, dynamic> toMap() {
     return {
+      'title': title,
+      'description': description,
       'couponId': couponId,
       'testDate': testDate,
+      'status': status,
     };
   }
 
@@ -73,8 +84,11 @@ class TestModel {
     if (map == null) return null;
   
     return TestModel(
+      title: map['title'],
+      description: map['description'],
       couponId: map['couponId'],
       testDate: map['testDate'],
+      status: map['status'],
     );
   }
 

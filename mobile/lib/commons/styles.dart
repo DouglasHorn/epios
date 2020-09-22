@@ -12,7 +12,7 @@ const sized_50 = const SizedBox(height: 50, width: 50);
 
 const Color primaryColor = const Color(0xff0057ff);
 const Color trnasparentBlack = const Color(0x99000000);
-const Color outlineButtonBorderColor = const Color(0xffdde9ff);
+const Color outlineButtonBorderColor = const Color(0xff0057ff);
 
 const TextStyle textHeaderStyle = TextStyle(fontSize: 12,color: trnasparentBlack);
 const TextStyle buttonTextStyle = TextStyle(fontSize: 14,fontWeight: FontWeight.bold);

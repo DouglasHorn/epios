@@ -13,10 +13,17 @@ class TestsPage extends StatefulWidget {
 }
 
 class _TestsPageState extends State<TestsPage> {
+  DataModel _model;
+
+  @override
+  void initState() {
+    super.initState();
+    _model = Global.data;
+  }
 
   @override
   Widget build(BuildContext context) {
-    if(Global.data.persons.isEmpty)
+    if(_model.persons.isEmpty)
       return _noTestBuilder();
     return _testListBuilder();
   }
@@ -63,7 +70,7 @@ class _TestsPageState extends State<TestsPage> {
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
-              ...Global.data.persons.values.map((e) => _testItemBuilder(e)).toList(),
+              ..._model.persons.values.map((e) => _testItemBuilder(e)).toList(),
             ]
           ),
         ),
@@ -95,7 +102,7 @@ class _TestsPageState extends State<TestsPage> {
     var t = Theme.of(context).textTheme;
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
-      onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>PersonsTestsPage(model: model,))),
+      onTap: ()=>_onViewPersonPressed(model),
       child: Container(
         width: infinity,
         height: 90,
@@ -131,6 +138,15 @@ class _TestsPageState extends State<TestsPage> {
 
   void _onAddPersonPressed()async{
     await Navigator.push(context, MaterialPageRoute(builder: (context)=>AddPersonPage(),));
-    setState(() {});
+    setState(() {
+      _model = Global.data;
+    });
+  }
+
+  void _onViewPersonPressed(PersonModel model)async{
+    await Navigator.push(context, MaterialPageRoute(builder: (context)=>PersonsTestsPage(model: model,)));
+    setState(() {
+      _model = Global.data;
+    });
   }
 }

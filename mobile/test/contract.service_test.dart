@@ -20,5 +20,11 @@ void main(){
       expect(countries[0].countryId, 1);
     });
 
+    test("Get sellers", ()async{
+      var sellers = await contractService.getSellers(1);
+      print(sellers);
+      expect(sellers[0].countryId, 1);
+    });
+
   });
 }

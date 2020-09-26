@@ -18,7 +18,7 @@ class [[eosio::contract("epios")]] epios : public eosio::contract {
            eosio::datastream<const char *> ds)
       : contract(receiver, code, ds){};
 
-  ACTION crcountry(std::string country_name);
+  ACTION crcountry(std::string country_name, uint64_t country_id);
 
   // Create Manager
   ACTION crmanager(eosio::name manager_name);
@@ -41,9 +41,12 @@ class [[eosio::contract("epios")]] epios : public eosio::contract {
 
   // Post Test Results
   ACTION posttestres(eosio::name country_manager_name, uint64_t coupon_id,
-                      eosio::checksum256 secret_key_hash, std::string secret_key, 
-                      uint64_t country_id, bool result, uint16_t lab_id);
+                      std::string secret_key_hash, uint64_t country_id, 
+                      bool result, uint16_t lab_id);
 
+  // Delete Country
+  ACTION delcountry(uint64_t country_id);
+  
   // Delete Manager
   ACTION delmanager(eosio::name manager_name);
 
@@ -51,11 +54,14 @@ class [[eosio::contract("epios")]] epios : public eosio::contract {
   ACTION delcountmngr(eosio::name manager_name, eosio::name country_manager_name);
 
   // Delete seller
-  ACTION delseller(eosio::name manager_name, uint16_t id);
+  ACTION delseller(eosio::name country_manager_name, uint16_t id);
+
+  // Delete coupon
+  ACTION delcoupon(eosio::name country_manager_name, uint16_t id);
 
  private:
   manager_index::const_iterator find_manager(eosio::name manager_name);
   country_manager_index::const_iterator find_country_manager(eosio::name country_manager_name);
-  void check_country_exists(uint64_t country_id);
-  coupons_index::const_iterator apprcoupon(uint64_t coupon_key, uint64_t country_id, eosio::checksum256 secret_key);
+  country_index::const_iterator find_country(uint64_t country_id);
+  coupons_index::const_iterator apprcoupon(uint64_t coupon_key, uint64_t country_id, std::string secret_key);
 };

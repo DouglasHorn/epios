@@ -21,4 +21,4 @@ echo "Coupons:"
 curl -d '{"json":true,"code":"main.epios","scope":"all","table":"coupons"}' -H 'Content-Type: application/json' https://api-test.telosfoundation.io/v1/chain/get_table_rows
 
 
-curl -d '{"json":true,"code":"main.epios","scope":"all","table":"coupons", "lower_bound": "2f3d0d3c0062a87d4ad2fa428d540922028fcd533df1a9f3ef69ca92a098284a", "index_position": 2, key_type: "checksum256"}' -H 'Content-Type: application/json' https://api-test.telosfoundation.io/v1/chain/get_table_rows
+curl -d '{"json":true,"code":"main.epios","scope":"all","table":"coupons", "lower_bound": "2209548d42fad24a7da862003c0d3d2f4a2898a092ca69eff3a9f13d53cd8f01", "index_position": 2, "key_type": "sha256", "limit": 1}' -H 'Content-Type: application/json' https://api-test.telosfoundation.io/v1/chain/get_table_rows

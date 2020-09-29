@@ -59,7 +59,7 @@ class PersonModel {
 class TestModel {
   final String title;
   final String description;
-  final String couponId;
+  String couponId;
   final int testDate;
   final int status;
   TestModel({

@@ -1,6 +1,7 @@
 import 'package:eosdart/eosdart.dart';
 import 'package:epios/models/country.model.dart';
 import 'package:epios/models/countryManager.model.dart';
+import 'package:epios/models/coupon.model.dart';
 import 'package:epios/models/seller.model.dart';
 
 class ContractService{
@@ -45,4 +46,12 @@ class ContractService{
     return d.map((e) => SellerModel.fromMap(e)).toList();
   }
 
+  Future<CouponModel> checkCoupon(String hash)async{
+    var d = await _client.getTableRow(contract, scope, "coupons",
+      lower: hash,
+      indexPosition: 2,
+      keyType: "sha256",
+    );
+    return CouponModel.fromMap(d);
+  }
 }

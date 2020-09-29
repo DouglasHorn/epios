@@ -1,5 +1,5 @@
 echo "Adding test countries"
-cleos push action main.epios crcountry '{"country_name": "United States of America"}' -p main.epios
+cleos push action main.epios crcountry '{"country_name": "United States of America", "country_id": 1}' -p main.epios
 sleep 1
 echo "Countries:"
 curl -d '{"json":true,"code":"main.epios","scope":"all","table":"country"}' -H 'Content-Type: application/json' http://localhost:8888/v1/chain/get_table_rows
@@ -31,14 +31,14 @@ curl -d '{"json":true,"code":"main.epios","scope":"all","table":"seller"}' -H 'C
 
 
 echo "Adding coupon"
-cleos push action main.epios crcoupon '{"country_manager_name": "crmgr.epios", "secret_key_hash": "7f792b5736dce35b9ab72ab5b0bf2c41d804f89d41f5cb1719e0dbfdacba8661", "country_id": 1}' -p crmgr.epios
+cleos push action main.epios crcoupon '{"country_manager_name": "crmgr.epios", "secret_key_hash": "23ab3a551407096bad1e34610802a6fc139426239f141876034523767a81dad2", "country_id": 1}' -p crmgr.epios
 sleep 1
 echo "Coupons:"
 curl -d '{"json":true,"code":"main.epios","scope":"all","table":"coupons"}' -H 'Content-Type: application/json' http://localhost:8888/v1/chain/get_table_rows
 
 
 echo "Post test result"
-cleos push action main.epios posttestres '{"country_manager_name": "crmgr.epios", "coupon_id": 0, "secret_key_hash": "7f792b5736dce35b9ab72ab5b0bf2c41d804f89d41f5cb1719e0dbfdacba8661", "secret_key": "D5XB4I6MDJMIE", "country_id": 1, "result_time": 1563027637, "result": true, "lab_id": 1}' -p crmgr.epios
+cleos push action main.epios posttestres '{"country_manager_name": "crmgr.epios", "coupon_id": 0, "secret_key_hash": "$\\xd9hu\\x98h\\x16?", "country_id": 1, "result_time": 1563027637, "result": true, "lab_id": 1}' -p crmgr.epios
 sleep 1
 echo "posttestres:"
 curl -d '{"json":true,"code":"main.epios","scope":"all","table":"test"}' -H 'Content-Type: application/json' http://localhost:8888/v1/chain/get_table_rows

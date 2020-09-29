@@ -379,37 +379,189 @@ async function addTestData(stage, env) {
   //   }
   // );
 
-  console.log('Post test result');
-  await eos.transact(
-    {
-      actions: [
-        {
-          account: mainAccountName,
-          name: 'posttestres',
-          authorization: [
-            {
-              actor: mainAccountName,
-              permission: env.DEFAULT_EOS_PERMISSION
-            }
-          ],
-          data: {
-            "country_manager_name": "main.epios", 
-            "coupon_id": 0, 
-            "secret_key_hash": "2f3d0d3c0062a87d4ad2fa428d540922028fcd533df1a9f3ef69ca92a098284a", 
-            "secret_key": "LTFWGPY2ROZNM", 
-            "country_id": 1, 
-            "result_time": 1563027637, 
-            "result": 1, 
-            "lab_id": 1
-          }
-        }
-      ]
-    },
-    {
-      blocksBehind: 3,
-      expireSeconds: 90
-    }
-  );
+  // console.log('Post test result');
+  // await eos.transact(
+  //   {
+  //     actions: [
+  //       {
+  //         account: mainAccountName,
+  //         name: 'posttestres',
+  //         authorization: [
+  //           {
+  //             actor: mainAccountName,
+  //             permission: env.DEFAULT_EOS_PERMISSION
+  //           }
+  //         ],
+  //         data: {
+  //           "country_manager_name": "main.epios", 
+  //           "coupon_id": 0, 
+  //           "secret_key_hash": "2f3d0d3c0062a87d4ad2fa428d540922028fcd533df1a9f3ef69ca92a098284a", 
+  //           "secret_key": "LTFWGPY2ROZNM", 
+  //           "country_id": 1, 
+  //           "result_time": 1563027637, 
+  //           "result": 1, 
+  //           "lab_id": 1
+  //         }
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     blocksBehind: 3,
+  //     expireSeconds: 90
+  //   }
+  // );
+
+//   console.log('delete couponsq');
+//   await eos.transact(
+//     {
+//       actions: [
+//         {
+//           account: mainAccountName,
+//           name: 'delcoupon',
+//           authorization: [
+//             {
+//               actor: mainAccountName,
+//               permission: env.DEFAULT_EOS_PERMISSION
+//             }
+//           ],
+//           data: {
+//             "country_manager_name": "main.epios",
+//             "id": 0
+//           }
+//         },
+//         {
+//           account: mainAccountName,
+//           name: 'delcoupon',
+//           authorization: [
+//             {
+//               actor: mainAccountName,
+//               permission: env.DEFAULT_EOS_PERMISSION
+//             }
+//           ],
+//           data: {
+//             "country_manager_name": "main.epios",
+//             "id": 1
+//           }
+//         },
+//         {
+//           account: mainAccountName,
+//           name: 'delcoupon',
+//           authorization: [
+//             {
+//               actor: mainAccountName,
+//               permission: env.DEFAULT_EOS_PERMISSION
+//             }
+//           ],
+//           data: {
+//             "country_manager_name": "main.epios",
+//             "id": 2
+//           }
+//         },
+//         {
+//           account: mainAccountName,
+//           name: 'delcoupon',
+//           authorization: [
+//             {
+//               actor: mainAccountName,
+//               permission: env.DEFAULT_EOS_PERMISSION
+//             }
+//           ],
+//           data: {
+//             "country_manager_name": "main.epios",
+//             "id": 3
+//           }
+//         },
+//         {
+//           account: mainAccountName,
+//           name: 'delcoupon',
+//           authorization: [
+//             {
+//               actor: mainAccountName,
+//               permission: env.DEFAULT_EOS_PERMISSION
+//             }
+//           ],
+//           data: {
+//             "country_manager_name": "main.epios",
+//             "id": 4
+//           }
+//         },
+//         {
+//           account: mainAccountName,
+//           name: 'delcoupon',
+//           authorization: [
+//             {
+//               actor: mainAccountName,
+//               permission: env.DEFAULT_EOS_PERMISSION
+//             }
+//           ],
+//           data: {
+//             "country_manager_name": "main.epios",
+//             "id": 5
+//           }
+//         },
+//         {
+//           account: mainAccountName,
+//           name: 'delcoupon',
+//           authorization: [
+//             {
+//               actor: mainAccountName,
+//               permission: env.DEFAULT_EOS_PERMISSION
+//             }
+//           ],
+//           data: {
+//             "country_manager_name": "main.epios",
+//             "id": 6
+//           }
+//         },
+//         {
+//           account: mainAccountName,
+//           name: 'delcoupon',
+//           authorization: [
+//             {
+//               actor: mainAccountName,
+//               permission: env.DEFAULT_EOS_PERMISSION
+//             }
+//           ],
+//           data: {
+//             "country_manager_name": "main.epios",
+//             "id": 7
+//           }
+//         },
+//         {
+//           account: mainAccountName,
+//           name: 'delcoupon',
+//           authorization: [
+//             {
+//               actor: mainAccountName,
+//               permission: env.DEFAULT_EOS_PERMISSION
+//             }
+//           ],
+//           data: {
+//             "country_manager_name": "main.epios",
+//             "id": 8
+//           }
+//         },
+//         {
+//           account: mainAccountName,
+//           name: 'delcoupon',
+//           authorization: [
+//             {
+//               actor: mainAccountName,
+//               permission: env.DEFAULT_EOS_PERMISSION
+//             }
+//           ],
+//           data: {
+//             "country_manager_name": "main.epios",
+//             "id": 9
+//           }
+//         }
+//       ]
+//     },
+//     {
+//       blocksBehind: 3,
+//       expireSeconds: 90
+//     }
+//   );
 }
 
 addTestData(stage, env).then(() => {

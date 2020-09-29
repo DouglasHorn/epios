@@ -28,7 +28,7 @@ struct [[eosio::table("seller"), eosio::contract("epios")]] seller {
                                        flag)(approve_time))
 };
 
-// Scoped by all
+const uint64_t scope_all_seller = eosio::name("all").value;
 typedef eosio::multi_index<"seller"_n, seller,
 eosio::indexed_by<"bycountry"_n, eosio::const_mem_fun<seller, uint64_t, &seller::country_id_index>>
-> seller_index;
+  > seller_index;

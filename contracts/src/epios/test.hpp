@@ -18,10 +18,15 @@ struct [[eosio::table("test"), eosio::contract("epios")]] test {
   uint16_t lab_id;
 
   uint64_t primary_key() const { return test_id; }
-
+  uint64_t couponid_key() const { return coupon_id; }
   EOSLIB_SERIALIZE(test,
                    (test_id)(coupon_id)(secret_key)(country_id)(
                        result_time)(result)(lab_id))
 };
 
-typedef eosio::multi_index<"test"_n, test> test_index;
+typedef eosio::multi_index<
+    "test"_n, test,
+    eosio::indexed_by<"userid"_n,
+                     eosio::const_mem_fun<test, uint64_t,
+                                          &test::couponid_key>>
+    > test_index;

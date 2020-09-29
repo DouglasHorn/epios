@@ -15,6 +15,14 @@ struct [[eosio::table("coupons"), eosio::contract("epios")]] coupons {
   eosio::checksum256 secret_key_hash;
   
   uint64_t primary_key() const { return coupon_id; }
+  eosio::checksum256 checksum_key() const { return secret_key_hash; }
+
   EOSLIB_SERIALIZE(coupons, (country_id)(coupon_id)(status)(secret_key_hash))
 };
-typedef eosio::multi_index<"coupons"_n, coupons> coupons_index;
+
+typedef eosio::multi_index<
+    "coupons"_n, coupons,
+    eosio::indexed_by<"checksum"_n,
+                     eosio::const_mem_fun<coupons, eosio::checksum256,
+                                          &coupons::checksum_key>>
+    > coupons_index;

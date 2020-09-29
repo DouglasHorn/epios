@@ -5,9 +5,7 @@ import 'package:epios/components/simpleAppBar.component.dart';
 import 'package:epios/models/country.model.dart';
 import 'package:epios/models/seller.model.dart';
 import 'package:epios/pgaes/selectCountry.page/selectCountry.page.dart';
-import 'package:epios/services/contract.service.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BuyTestKitPage extends StatefulWidget {
   @override
@@ -54,11 +52,11 @@ class _BuyTestKitPageState extends State<BuyTestKitPage> {
               borderSide: BorderSide(color: outlineButtonBorderColor),
               textColor: outlineButtonBorderColor,
               onPressed: ()async{
-                var t = await Navigator.push(context,MaterialPageRoute(builder: (context)=>SelectCountryPage()));
+                var t = await Navigator.push<CountryModel>(context,MaterialPageRoute(builder: (context)=>SelectCountryPage()));
                 if(t==null)
                   return;
                 _selectedCountry = t;
-                _sellers = Global.contractService.getSellers(1);
+                _sellers = Global.contractService.getSellers(t.countryId);
                 setState(() {});
               }, 
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),

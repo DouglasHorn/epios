@@ -1,5 +1,8 @@
 import 'package:epios/commons/global.dart';
+import 'package:epios/components/busyIndicator.component.dart';
+import 'package:epios/models/coupon.model.dart';
 import 'package:epios/pgaes/newTest.page/newTest.page.dart';
+import 'package:epios/services/contract.service.dart';
 import 'package:flutter/material.dart';
 
 import 'package:epios/commons/styles.dart';
@@ -9,6 +12,7 @@ import 'package:epios/pgaes/buyTestKit.page/buyTestKit.page.dart';
 import 'package:epios/pgaes/pending.page/pending.page.dart';
 import 'package:epios/pgaes/performTest.page/performTest.page.dart';
 import 'package:epios/pgaes/viewResult.page/viewResult.page.dart';
+import 'package:epios/commons/extension.dart';
 
 class PersonsTestsPage extends StatefulWidget {
   final PersonModel model;
@@ -131,30 +135,36 @@ class _PersonsTestsPageState extends State<PersonsTestsPage> {
               Text(model.description??"",style: t.headline6.copyWith(fontSize: 14,color:Colors.grey[600])),
             ],
           ),
-          if(model.status == 0)
+          if(model.couponId==null)
             SizedBox(
               width: 150, 
               height: 35,
               child: RaisedButton(
                 child: Text("PERFORM TEST",style: buttonTextStyle),
                 textColor: Colors.white,
-                onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>PerformTestPage())), 
+                onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>PerformTestPage(model: model,))), 
                 elevation: 0,
               ),
             )
-          else if(model.status == 2 || model.status == 3)
-            SizedBox(
-              width: 150,
-              height: 35,
-              child: RaisedButton(
-                child: Text("VIEW RESULTS",style: buttonTextStyle,),
-                textColor: Colors.white,
-                onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewResultPage(isPositive: model.status == 3 ,))), 
-                elevation: 0,
-              ),
-            )
-          else if(model.status == 1)
-            SizedBox(
+          else
+            _buildWidget(model)
+        ],
+      ),
+    );
+  }
+
+  Widget _buildWidget(TestModel model){
+    return FutureBuilder(
+      future: Global.contractService.checkCoupon(model.couponId.getCouponHash.getLittleEndian),
+      initialData: null,
+      builder: (BuildContext context, AsyncSnapshot<CouponModel> s) {
+        if(s.connectionState == ConnectionState.waiting)
+          return BusyIndicator();
+
+        if(s.connectionState == ConnectionState.done){
+          var d = s.data;
+          if(d.status == 0)
+            return SizedBox(
               width: 150,
               height: 35,
               child: OutlineButton(
@@ -163,9 +173,20 @@ class _PersonsTestsPageState extends State<PersonsTestsPage> {
                 textColor: outlineButtonBorderColor,
                 onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>PendingPage())), 
               ),
-            )
-        ],
-      ),
+            );
+          if(model.status == 2 || model.status == 3)
+            return SizedBox(
+              width: 150,
+              height: 35,
+              child: RaisedButton(
+                child: Text("VIEW RESULTS",style: buttonTextStyle,),
+                textColor: Colors.white,
+                onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewResultPage(isPositive: model.status == 3 ,))), 
+                elevation: 0,
+              ),
+            );
+        }
+      },
     );
   }
 

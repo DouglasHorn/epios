@@ -19,6 +19,8 @@ dependencies:
   eosdart: ^0.4.6
   shared_preferences: ^0.5.10
   encrypt: ^4.0.3
+  base32: 1.1.1
+  crypto: ^2.1.5
   
 dev_dependencies:
   flutter_test:

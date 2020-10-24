@@ -63,9 +63,9 @@ async function addTestData(stage, env) {
   const account = ScatterJS.account(env.BLOCKCHAIN_NAME);
   const mainAccountName = "main.epios";
 
-  if (account.name != mainAccountName) {
-    throw "Invalid account";
-  }
+  // if (account.name != mainAccountName) {
+  //   throw "Invalid account";
+  // }
 
   // console.log('Adding country');
   // await eos.transact(
@@ -218,166 +218,166 @@ async function addTestData(stage, env) {
   EYPKFAXNG7GZO
   */
 
-  // await eos.transact(
-  //   {
-  //     actions: [
-  //       {
-  //         account: mainAccountName,
-  //         name: 'crcoupon',
-  //         authorization: [
-  //           {
-  //             actor: mainAccountName,
-  //             permission: env.DEFAULT_EOS_PERMISSION
-  //           }
-  //         ],
-  //         data: {
-  //           "country_manager_name": "main.epios", 
-  //           "secret_key_hash": "2f3d0d3c0062a87d4ad2fa428d540922028fcd533df1a9f3ef69ca92a098284a", 
-  //           "country_id": 1
-  //         }
-  //       },
-  //       {
-  //         account: mainAccountName,
-  //         name: 'crcoupon',
-  //         authorization: [
-  //           {
-  //             actor: mainAccountName,
-  //             permission: env.DEFAULT_EOS_PERMISSION
-  //           }
-  //         ],
-  //         data: {
-  //           "country_manager_name": "main.epios", 
-  //           "secret_key_hash": "8f5a3e0f987f86d44b6682272bd27c1a761d8c55dc322524cbd1e8a538f6df97", 
-  //           "country_id": 1
-  //         }
-  //       },
-  //       {
-  //         account: mainAccountName,
-  //         name: 'crcoupon',
-  //         authorization: [
-  //           {
-  //             actor: mainAccountName,
-  //             permission: env.DEFAULT_EOS_PERMISSION
-  //           }
-  //         ],
-  //         data: {
-  //           "country_manager_name": "main.epios", 
-  //           "secret_key_hash": "1188141c2448f11883961af5873686235309183a79698d4535ecf27936d743b6", 
-  //           "country_id": 1
-  //         }
-  //       },
-  //       {
-  //         account: mainAccountName,
-  //         name: 'crcoupon',
-  //         authorization: [
-  //           {
-  //             actor: mainAccountName,
-  //             permission: env.DEFAULT_EOS_PERMISSION
-  //           }
-  //         ],
-  //         data: {
-  //           "country_manager_name": "main.epios", 
-  //           "secret_key_hash": "4e7b59fd8d3508c0165e88353c51b3b4803f9659b2e07a8344d7e573ea2aca5d", 
-  //           "country_id": 1
-  //         }
-  //       },
-  //       {
-  //         account: mainAccountName,
-  //         name: 'crcoupon',
-  //         authorization: [
-  //           {
-  //             actor: mainAccountName,
-  //             permission: env.DEFAULT_EOS_PERMISSION
-  //           }
-  //         ],
-  //         data: {
-  //           "country_manager_name": "main.epios", 
-  //           "secret_key_hash": "e78b0f286e84ab0412f9c095cbd628071732ee41ed0d44eacd9a0f498fcb4d0f", 
-  //           "country_id": 1
-  //         }
-  //       },
-  //       {
-  //         account: mainAccountName,
-  //         name: 'crcoupon',
-  //         authorization: [
-  //           {
-  //             actor: mainAccountName,
-  //             permission: env.DEFAULT_EOS_PERMISSION
-  //           }
-  //         ],
-  //         data: {
-  //           "country_manager_name": "main.epios", 
-  //           "secret_key_hash": "fffd0aa03df1b716357730527aeade7858df91ee7c8ca9bdf659bbd6e9763111", 
-  //           "country_id": 1
-  //         }
-  //       },
-  //       {
-  //         account: mainAccountName,
-  //         name: 'crcoupon',
-  //         authorization: [
-  //           {
-  //             actor: mainAccountName,
-  //             permission: env.DEFAULT_EOS_PERMISSION
-  //           }
-  //         ],
-  //         data: {
-  //           "country_manager_name": "main.epios", 
-  //           "secret_key_hash": "8487d74a402a19c41197a9028cb11b2f09ce65acfca0bceaad943d392da19bee", 
-  //           "country_id": 1
-  //         }
-  //       },
-  //       {
-  //         account: mainAccountName,
-  //         name: 'crcoupon',
-  //         authorization: [
-  //           {
-  //             actor: mainAccountName,
-  //             permission: env.DEFAULT_EOS_PERMISSION
-  //           }
-  //         ],
-  //         data: {
-  //           "country_manager_name": "main.epios", 
-  //           "secret_key_hash": "8c7912c1a872caeefa7522b580ed250b3bdb08203d3fd0e691d45187fe048ec9", 
-  //           "country_id": 1
-  //         }
-  //       },
-  //       {
-  //         account: mainAccountName,
-  //         name: 'crcoupon',
-  //         authorization: [
-  //           {
-  //             actor: mainAccountName,
-  //             permission: env.DEFAULT_EOS_PERMISSION
-  //           }
-  //         ],
-  //         data: {
-  //           "country_manager_name": "main.epios", 
-  //           "secret_key_hash": "79bfbd31ce0c4002100c382c5e7d704a5ced620fff4d4d60d31d9afdaca1e0cf", 
-  //           "country_id": 1
-  //         }
-  //       },
-  //       {
-  //         account: mainAccountName,
-  //         name: 'crcoupon',
-  //         authorization: [
-  //           {
-  //             actor: mainAccountName,
-  //             permission: env.DEFAULT_EOS_PERMISSION
-  //           }
-  //         ],
-  //         data: {
-  //           "country_manager_name": "main.epios", 
-  //           "secret_key_hash": "77a9fcd79f5fff474fed77993a59362bf2b3b612c57335809c19bd3e31ccf504", 
-  //           "country_id": 1
-  //         }
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     blocksBehind: 3,
-  //     expireSeconds: 90
-  //   }
-  // );
+  await eos.transact(
+    {
+      actions: [
+        {
+          account: mainAccountName,
+          name: 'crcoupon',
+          authorization: [
+            {
+              actor: account.name,
+              permission: env.DEFAULT_EOS_PERMISSION
+            }
+          ],
+          data: {
+            "country_manager_name": account.name, 
+            "secret_key_hash": "2f3d0d3c0062a87d4ad2fa428d540922028fcd533df1a9f3ef69ca92a098284a", 
+            "country_id": 840
+          }
+        },
+        {
+          account: mainAccountName,
+          name: 'crcoupon',
+          authorization: [
+            {
+              actor: account.name,
+              permission: env.DEFAULT_EOS_PERMISSION
+            }
+          ],
+          data: {
+            "country_manager_name": account.name, 
+            "secret_key_hash": "8f5a3e0f987f86d44b6682272bd27c1a761d8c55dc322524cbd1e8a538f6df97", 
+            "country_id": 840
+          }
+        },
+        {
+          account: mainAccountName,
+          name: 'crcoupon',
+          authorization: [
+            {
+              actor: account.name,
+              permission: env.DEFAULT_EOS_PERMISSION
+            }
+          ],
+          data: {
+            "country_manager_name": account.name, 
+            "secret_key_hash": "1188141c2448f11883961af5873686235309183a79698d4535ecf27936d743b6", 
+            "country_id": 840
+          }
+        },
+        {
+          account: mainAccountName,
+          name: 'crcoupon',
+          authorization: [
+            {
+              actor: account.name,
+              permission: env.DEFAULT_EOS_PERMISSION
+            }
+          ],
+          data: {
+            "country_manager_name": account.name, 
+            "secret_key_hash": "4e7b59fd8d3508c0165e88353c51b3b4803f9659b2e07a8344d7e573ea2aca5d", 
+            "country_id": 840
+          }
+        },
+        {
+          account: mainAccountName,
+          name: 'crcoupon',
+          authorization: [
+            {
+              actor: account.name,
+              permission: env.DEFAULT_EOS_PERMISSION
+            }
+          ],
+          data: {
+            "country_manager_name": account.name, 
+            "secret_key_hash": "e78b0f286e84ab0412f9c095cbd628071732ee41ed0d44eacd9a0f498fcb4d0f", 
+            "country_id": 840
+          }
+        },
+        {
+          account: mainAccountName,
+          name: 'crcoupon',
+          authorization: [
+            {
+              actor: account.name,
+              permission: env.DEFAULT_EOS_PERMISSION
+            }
+          ],
+          data: {
+            "country_manager_name": account.name, 
+            "secret_key_hash": "fffd0aa03df1b716357730527aeade7858df91ee7c8ca9bdf659bbd6e9763111", 
+            "country_id": 840
+          }
+        },
+        {
+          account: mainAccountName,
+          name: 'crcoupon',
+          authorization: [
+            {
+              actor: account.name,
+              permission: env.DEFAULT_EOS_PERMISSION
+            }
+          ],
+          data: {
+            "country_manager_name": account.name, 
+            "secret_key_hash": "8487d74a402a19c41197a9028cb11b2f09ce65acfca0bceaad943d392da19bee", 
+            "country_id": 840
+          }
+        },
+        {
+          account: mainAccountName,
+          name: 'crcoupon',
+          authorization: [
+            {
+              actor: account.name,
+              permission: env.DEFAULT_EOS_PERMISSION
+            }
+          ],
+          data: {
+            "country_manager_name": account.name, 
+            "secret_key_hash": "8c7912c1a872caeefa7522b580ed250b3bdb08203d3fd0e691d45187fe048ec9", 
+            "country_id": 840
+          }
+        },
+        {
+          account: mainAccountName,
+          name: 'crcoupon',
+          authorization: [
+            {
+              actor: account.name,
+              permission: env.DEFAULT_EOS_PERMISSION
+            }
+          ],
+          data: {
+            "country_manager_name": account.name, 
+            "secret_key_hash": "79bfbd31ce0c4002100c382c5e7d704a5ced620fff4d4d60d31d9afdaca1e0cf", 
+            "country_id": 840
+          }
+        },
+        {
+          account: mainAccountName,
+          name: 'crcoupon',
+          authorization: [
+            {
+              actor: account.name,
+              permission: env.DEFAULT_EOS_PERMISSION
+            }
+          ],
+          data: {
+            "country_manager_name": account.name, 
+            "secret_key_hash": "77a9fcd79f5fff474fed77993a59362bf2b3b612c57335809c19bd3e31ccf504", 
+            "country_id": 840
+          }
+        }
+      ]
+    },
+    {
+      blocksBehind: 3,
+      expireSeconds: 90
+    }
+  );
 
   // console.log('Post test result');
   // await eos.transact(
@@ -395,11 +395,12 @@ async function addTestData(stage, env) {
   //         data: {
   //           "country_manager_name": "main.epios", 
   //           "coupon_id": 0, 
-  //           "secret_key_hash": "2f3d0d3c0062a87d4ad2fa428d540922028fcd533df1a9f3ef69ca92a098284a", 
-  //           "secret_key": "LTFWGPY2ROZNM", 
+  //           "secret_key_hash": "$\\xd9hu\\x98h\\x16?", 
   //           "country_id": 1, 
-  //           "result_time": 1563027637, 
-  //           "result": 1, 
+  //           "test_type": "value test_type"
+  //           "report": "value report"
+  //           "test_date": 1563027637, 
+  //           "result": "POSITIVE", 
   //           "lab_id": 1
   //         }
   //       }

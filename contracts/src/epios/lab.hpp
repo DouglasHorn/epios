@@ -12,11 +12,9 @@ struct [[eosio::table("lab"), eosio::contract("epios")]] lab {
   std::string phone;
   std::string email;
   uint64_t country_id;
-
   time_t approve_time;
 
   uint64_t primary_key() const { return id; }
-
   uint64_t country_id_index() const { return country_id; }; 
 
   EOSLIB_SERIALIZE(lab, (id)(name)(address)(phone)(email)(country_id)(approve_time))

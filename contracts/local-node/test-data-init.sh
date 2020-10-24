@@ -38,7 +38,7 @@ curl -d '{"json":true,"code":"main.epios","scope":"all","table":"coupons"}' -H '
 
 
 echo "Post test result"
-cleos push action main.epios posttestres '{"country_manager_name": "crmgr.epios", "coupon_id": 0, "secret_key_hash": "$\\xd9hu\\x98h\\x16?", "country_id": 1, "result_time": 1563027637, "result": true, "lab_id": 1}' -p crmgr.epios
+cleos push action main.epios posttestres '{"country_manager_name": "crmgr.epios", "coupon_id": 0, "secret_key_hash": "$\\xd9hu\\x98h\\x16?", "country_id": 1, "test_type": "value test_type", "report": "value report", "test_date": "1111111111" "result": "POSITIVE", "lab_id": 1}' -p crmgr.epios
 sleep 1
 echo "posttestres:"
 curl -d '{"json":true,"code":"main.epios","scope":"all","table":"test"}' -H 'Content-Type: application/json' http://localhost:8888/v1/chain/get_table_rows

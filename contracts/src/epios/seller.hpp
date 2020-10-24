@@ -18,14 +18,12 @@ struct [[eosio::table("seller"), eosio::contract("epios")]] seller {
   std::string address;
   std::string url;
   int flag;
-
   time_t approve_time;
 
   uint64_t primary_key() const { return id; }
   uint64_t country_id_index() const { return country_id; }; 
   
-  EOSLIB_SERIALIZE(seller, (id)(name)(country_id)(address)(url)(
-                                       flag)(approve_time))
+  EOSLIB_SERIALIZE(seller, (id)(name)(country_id)(address)(url)(flag)(approve_time))
 };
 
 const uint64_t scope_all_seller = eosio::name("all").value;

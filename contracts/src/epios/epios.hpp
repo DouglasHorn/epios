@@ -41,10 +41,11 @@ class [[eosio::contract("epios")]] epios : public eosio::contract {
 
   // Post Test Results
   ACTION posttestres(eosio::name country_manager_name, uint64_t coupon_id,
-                      std::string secret_key_hash, uint64_t country_id, 
-                      bool result, uint16_t lab_id);
+                      std::string secret_key, uint64_t country_id,
+                      std::string test_type, std::string report,
+                      time_t test_date, std::string result, uint16_t lab_id);
 
-  // Delete Country
+  // Delete Countru
   ACTION delcountry(uint64_t country_id);
   
   // Delete Manager
@@ -53,12 +54,17 @@ class [[eosio::contract("epios")]] epios : public eosio::contract {
   // Delete Country Manager
   ACTION delcountmngr(eosio::name manager_name, eosio::name country_manager_name);
 
+  // Delete lab
+  ACTION dellab(eosio::name country_manager_name, uint16_t id);
+
   // Delete seller
   ACTION delseller(eosio::name country_manager_name, uint16_t id);
 
   // Delete coupon
   ACTION delcoupon(eosio::name country_manager_name, uint16_t id);
 
+  // Delete test
+  ACTION deltest(eosio::name country_manager_name, uint16_t id);
  private:
   manager_index::const_iterator find_manager(eosio::name manager_name);
   country_manager_index::const_iterator find_country_manager(eosio::name country_manager_name);

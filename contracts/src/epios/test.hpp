@@ -13,7 +13,10 @@ struct [[eosio::table("test"), eosio::contract("epios")]] test {
   uint64_t coupon_id;
   std::string secret_key;
   uint64_t country_id;
+  std::string test_type;
+  std::string report;
   time_t result_time;
+  time_t test_date;
   std::string result;
   uint16_t lab_id;
 
@@ -21,7 +24,7 @@ struct [[eosio::table("test"), eosio::contract("epios")]] test {
   uint64_t couponid_key() const { return coupon_id; }
   EOSLIB_SERIALIZE(test,
                    (test_id)(coupon_id)(secret_key)(country_id)(
-                       result_time)(result)(lab_id))
+                        test_type)(report)(result_time)(test_date)(result)(lab_id))
 };
 
 typedef eosio::multi_index<

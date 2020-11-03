@@ -72,7 +72,7 @@ class _PerformTestPageState extends State<PerformTestPage> {
                             var hash = cameraScanResult.getCouponHash;
                             _message = InlineMessageModel.info(message: "Validating coupon ...");
                             setState(() {});
-                            var d = await Global.contractService.checkCoupon(hash.getLittleEndian);
+                            var d = await Global.contractService.checkCoupon(hash);
                             if(d.secretKeyHash != hash){
                               _message = InlineMessageModel.error(message: "This coupon is not valid in database");
                             }else{

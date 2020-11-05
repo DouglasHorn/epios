@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-class TestModel {
+class TestResultModel {
   final int testId;
   final int couponId;
   final String secretKey;
@@ -8,7 +8,7 @@ class TestModel {
   final int resultTime;
   final String result;
   final int labId;
-  TestModel({
+  TestResultModel({
     this.testId,
     this.couponId,
     this.secretKey,
@@ -30,10 +30,10 @@ class TestModel {
     };
   }
 
-  factory TestModel.fromMap(Map<String, dynamic> map) {
+  factory TestResultModel.fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
   
-    return TestModel(
+    return TestResultModel(
       testId: map['test_id'],
       couponId: map['coupon_id'],
       secretKey: map['secret_key'],
@@ -46,7 +46,7 @@ class TestModel {
 
   String toJson() => json.encode(toMap());
 
-  factory TestModel.fromJson(String source) => TestModel.fromMap(json.decode(source));
+  factory TestResultModel.fromJson(String source) => TestResultModel.fromMap(json.decode(source));
 
   @override
   String toString() {

@@ -2,7 +2,9 @@ import 'package:eosdart/eosdart.dart';
 import 'package:epios/models/country.model.dart';
 import 'package:epios/models/countryManager.model.dart';
 import 'package:epios/models/coupon.model.dart';
+import 'package:epios/models/data.model.dart';
 import 'package:epios/models/seller.model.dart';
+import 'package:epios/models/test.model.dart';
 
 class ContractService{
   EOSClient _client;
@@ -53,5 +55,15 @@ class ContractService{
       keyType: "sha256",
     );
     return CouponModel.fromMap(d);
+  }
+
+  Future<TestResultModel> getTestResult(int couponId)async{
+    var d = await _client.getTableRow(contract, scope, "test",
+      lower: couponId.toString(),
+      indexPosition: 2,
+      keyType: "i64",
+    );
+    print(d);
+    return TestResultModel.fromMap(d);    
   }
 }

@@ -155,11 +155,11 @@ class _PersonsTestsPageState extends State<PersonsTestsPage> {
 
   Widget _buildWidget(TestModel model){
     return FutureBuilder(
-      future: Global.contractService.checkCoupon(model.couponId.getCouponHash.getLittleEndian),
+      future: Global.contractService.checkCoupon(model.couponId.getCouponHash),
       initialData: null,
       builder: (BuildContext context, AsyncSnapshot<CouponModel> s) {
         if(s.connectionState == ConnectionState.waiting)
-          return BusyIndicator();
+          return BusyIndicator(); 
 
         if(s.connectionState == ConnectionState.done){
           var d = s.data;
@@ -174,14 +174,14 @@ class _PersonsTestsPageState extends State<PersonsTestsPage> {
                 onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>PendingPage())), 
               ),
             );
-          if(model.status == 2 || model.status == 3)
+          if(d.status == 1)
             return SizedBox(
               width: 150,
               height: 35,
               child: RaisedButton(
                 child: Text("VIEW RESULTS",style: buttonTextStyle,),
                 textColor: Colors.white,
-                onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewResultPage(isPositive: model.status == 3 ,))), 
+                onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewResultPage(couponId: d.couponId,))), 
                 elevation: 0,
               ),
             );

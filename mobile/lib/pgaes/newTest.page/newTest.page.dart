@@ -87,7 +87,7 @@ class _NewTestPageState extends State<NewTestPage> {
       TestModel(
         title: _titleController.text,
         description: _descriptionController.text,
-        status: 0,
+        status: -1,
         testDate: DateTime.now().millisecondsSinceEpoch
       ),
     );
